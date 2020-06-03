@@ -1,0 +1,2 @@
+https://www.linuxtechi.com/configure-pxe-installation-server-centos-7/
+https://archyslife.blogspot.com/2018/01/setting-up-pxe-server-with-centos-7.html

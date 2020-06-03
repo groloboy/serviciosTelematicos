@@ -1,0 +1,13 @@
+$ORIGIN servicios.com.
+$TTL 84600
+@           IN  SOA     server.servicios.com. root@servicios.com. (
+            123312 ; serial
+            1h ; refresh
+            2h ; retry
+            1w ; expire
+            1h) ; min cache
+@               IN NS server.servicios.com.
+; hosts en la zona
+server          IN  A           192.168.50.3
+www             IN  CNAME       server
+servicios.com   IN  MX      10  server.servicios.com

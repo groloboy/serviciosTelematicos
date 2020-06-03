@@ -1,0 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+	config.vm.define :machine1 do |machine1|
+	  machine1.vm.box = "bento/ubuntu-19.10"
+	  machine1.vm.network :private_network, ip: "172.16.0.2"
+	  machine1.vm.hostname = "machine1"
+	end
+end

@@ -1,0 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.define :clienteNAT do |clienteNAT|
+    clienteNAT.vm.box = "bento/centos-7.7"
+    clienteNAT.vm.network :private_network, ip: "209.191.50.4"
+    clienteNAT.vm.hostname = "clienteNAT"
+    clienteNAT.vm.provision "shell", path: "provisionClienteNAT.sh"
+    clienteNAT.vm.synced_folder "archivos/", "/home/vagrant/archivos"
+  end
+  config.vm.define :firewallNAT do |firewallNAT|
+    firewallNAT.vm.box = "bento/centos-7.7"
+    firewallNAT.vm.network :private_network, ip: "192.168.50.5"
+    firewallNAT.vm.network :private_network, ip: "209.191.50.3"
+    firewallNAT.vm.hostname = "firewallNAT"
+    firewallNAT.vm.provision "shell", path: "provisionFirewallNAT.sh"
+    firewallNAT.vm.synced_folder "archivos/", "/home/vagrant/archivos"
+  end
+end

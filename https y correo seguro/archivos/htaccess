@@ -1,0 +1,10 @@
+﻿RewriteEngine On
+#Define el tipo de autenticación.
+AuthType Basic
+#Define la ubicación de los archivos de password
+creados con htpasswd
+AuthUserFile /etc/httpd/claves
+#Define el nombre de los recursos.
+AuthName "Directorio Privado"
+#permiso a todos los usuarios.
+Require valid-user

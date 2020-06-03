@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+ config.vm.define :servidor do |servidor|
+   servidor.vm.box = "bento/centos-7.7"
+   servidor.vm.network :private_network, ip: "192.168.50.3"
+   servidor.vm.hostname = "servidor"
+   servidor.vm.provision "shell", path: "provisionServer.sh"
+ end
+ config.vm.define :cliente do |cliente|
+   cliente.vm.box = "bento/centos-7.7"
+   cliente.vm.network :private_network, ip: "192.168.50.2"
+   cliente.vm.hostname = "cliente"
+   cliente.vm.provision "shell", path: "provisionClient.sh"
+ end 
+end

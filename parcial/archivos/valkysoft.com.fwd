@@ -1,0 +1,17 @@
+$ORIGIN valkysoft.com.
+$TTL 84600
+@           IN  SOA     servidor3.valkysoft.com. root@valkysoft.com. (
+            123312 ; serial
+            1h ; refresh
+            2h ; retry
+            1w ; expire
+            1h) ; min cache
+@               IN NS servidor3.valkysoft.com.
+@               IN MX   10 servidor2.valkysoft.com.
+; hosts en la zona
+servidor3       IN  A           192.168.50.3
+servidor2       IN  A           192.168.50.4
+firewall        IN  A           192.168.0.16
+smart           IN  A           192.168.0.11
+www             IN  CNAME       firewall
+valkysoft.com   IN  MX      10  servidor2.valkysoft.com.

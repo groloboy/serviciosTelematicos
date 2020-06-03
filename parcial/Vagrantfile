@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.define :vm3 do |vm3|
+    vm3.vm.box = "bento/centos-7.7"
+    vm3.vm.network :private_network, ip: "192.168.50.3"
+    vm3.vm.hostname = "vm3"
+    vm3.vm.provision "shell", path: "provisionvm3.sh"
+    vm3.vm.synced_folder "archivos/", "/home/vagrant/archivos"
+  end
+  config.vm.define :vm2 do |vm2|
+    vm2.vm.box = "bento/centos-7.7"
+    vm2.vm.network :private_network, ip: "192.168.50.4"
+    vm2.vm.hostname = "vm2"
+    vm2.vm.provision "shell", path: "provisionvm2.sh"
+    vm2.vm.synced_folder "archivos/", "/home/vagrant/archivos"
+  end
+  config.vm.define :vm1 do |vm1|
+    vm1.vm.box = "bento/centos-7.7"
+    vm1.vm.network :private_network, ip: "192.168.50.2"
+    vm1.vm.network :public_network, ip: "192.168.0.16"
+    vm1.vm.hostname = "vm1"
+    vm1.vm.network :forwarded_port, guest: 443, host:4568
+    vm1.vm.provision "shell", path: "provisionvm1.sh"
+    vm1.vm.synced_folder "archivos/", "/home/vagrant/archivos"
+  end
+end

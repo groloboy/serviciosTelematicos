@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.box_download_insecure = true
+ config.vm.define :servidor do |servidor|
+   servidor.vm.box = "bento/centos-7.7"
+   servidor.vm.network :private_network, ip: "192.168.50.3"
+   servidor.vm.hostname = "servidor"
+   servidor.vm.provision "shell", path: "pxe.sh"
+   servidor.vm.synced_folder "archivos/", "/home/vagrant/archivos"
+ end
+end

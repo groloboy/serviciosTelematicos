@@ -1,0 +1,16 @@
+[Unit]
+Description=Streama Server
+After=syslog.target
+After=network.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/bin/java -jar /opt/streama/streama.war
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=Streama
+
+[Install]
+WantedBy=multi-user.target
